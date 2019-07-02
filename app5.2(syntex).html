@@ -1,0 +1,50 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vuejs Template(Syntax)</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>JS 표현식1</h3>
+        <span>number(15)*3 = {{number*3}}</span>
+        <br>
+        <br>
+        <br>
+        <h3>JS 표현식2(삼항연산자)</h3>
+        <span>cond?'true':'false' : {{condition?true:false}}</span>
+        <br>
+        <br>
+        <br>
+        <h3>JS 표현식3(method return)</h3>
+        <span>msg.split('').reverse().join('') = {{msg.split('').reverse().join('')}}</span>
+        <br>
+        <br>
+        <br>
+        <h3>JS 표현식4(속성 바인딩)</h3>
+        <span>v-bind:id="id" :
+            <span v-bind:id="'list-'+addId">{{addId}}</span>
+        </span>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                number: 15,
+                condition: true,
+                msg: 'hello vuejs',
+                addId: 'first'
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>vue.js</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Vuejs - compute, method</h3>
+        <div id="example">
+            <p>Original : {{ message }}</p>
+            <!-- 기본 -->
+            <p>Expression: {{ message.split('').reverse().join('') }}</p>
+            <!-- 표현식 -->
+            <p>Compute: {{ reversedMessage1 }}</p>
+            <!-- Compute -->
+            <p>Method: {{ reversedMessage2() }}
+                <!-- Method -->
+                <p>
+                    <input v-model="message">
+                </p>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+
+        //인스턴스 생성
+        var app = new Vue({
+            el: '#example',
+            data: {
+                message: '12345'
+            },
+            computed: { //message 값이 변경되지 않으면 캐싱 된다.
+                reversedMessage1: function () {
+                    // this : vm 객체
+                    return this.message.split('').reverse().join('')
+                }
+            },
+            methods: {  //message  값은 항상 메소드 호출 후 반환된다.
+                reversedMessage2: function () {
+                    return this.message.split('').reverse().join('')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

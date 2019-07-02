@@ -1,0 +1,46 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vuejs Component</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Vue.js 컴포넌트 기본 실습</h1>
+        <ol>
+            <li v-for="item in groceryList" :id="item.id">{{item.text}}</li>
+        </ol>
+        <ul :id="loadingTime">
+            <todo-item v-for="item in groceryList" v-bind:todo1="item" v-bind:todo2="item">
+            </todo-item>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+
+        Vue.component('todo-item', {
+            props: ['todo1', 'todo2'],
+            template: '<li :id="todo1.id">{{todo2.text}}</li>' //:id="obj.attr"
+        })
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                groceryList: [
+                    { id: 0, text: '삼겹살' },
+                    { id: 1, text: '돼지갈비' },
+                    { id: 2, text: '오리호박찜' },
+                    { id: 3, text: '뚝배기소고기' }
+                ],
+                loadingTime: '이 페이지는 ' + new Date() + '에 로딩 되었습니다.',
+                seen: false
+            }
+        })
+    </script>
+</body>
+
+</html>

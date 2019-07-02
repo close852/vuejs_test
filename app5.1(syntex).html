@@ -1,0 +1,35 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vuejs Template(Syntax)</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Vue.js Template(Syntax)</h1>
+        <div>{{message}}</div>
+        <div v-once>{{message_once}}</div>
+        <div>{{message_html}}</div>
+        <div v-html="message_html"></div>
+        <button v-bind:disabled="isBtnDisabled">Button</button>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                test: 'qqq',
+                message: `It is msg`,
+                message_once: 'message once!',
+                message_html: `<li>Tag 매핑;</li>`,
+                isBtnDisabled: false
+            }
+        })
+    </script>
+</body>
+
+</html>

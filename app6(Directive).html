@@ -1,0 +1,66 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vuejs Template(Syntax)</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>디렉티브 v-if</h3>
+        <span v-if="testFlag">True Show</span>
+        <span v-else-if="testFlag2">True False2</span>
+        <span v-else>True False3</span>
+
+        <br/>
+        <br/>
+        <br/>
+        <h3>디렉티브 v-bind</h3>
+        <a v-bind:href="url">Link Activate</a>
+        <br/>
+        <br/>
+        <br/>
+        <h3>디렉티브 v-on:click(1)</h3>
+        <button v-on:click="doPrint">click</button>
+        <br/>
+        <br/>
+        <br/>
+        <h3>디렉티브 v-on:click(2)</h3>
+        <button @click="cnt += 1">{{ cnt }}</button>
+        <br/>
+        <br/>
+        <br/>
+        <h3>디렉티브 수식어</h3>
+        <form v-on:submit.prevent="onsubmit">
+            <button type="submit" value="Submit">Submit Test</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+
+        //인스턴스 생성
+        var app = new Vue({
+            el: '#app',
+            data: {
+                testFlag: false,
+                testFlag2: false,
+                url: "#",
+                cnt: 0
+            },
+            methods: {
+                doPrint: function (e) {
+                    console.log('Click Test!', e);
+                },
+                onsubmit: function (e) {
+                    console.log('submit', e);
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

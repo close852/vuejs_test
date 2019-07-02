@@ -1,0 +1,47 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>webpos-do</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Vue.js -인스턴스 생성 & Watch</h1>
+        <h5>Count : {{test}}</h2>
+            <button v-on:click="test +=1">Add one</button>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        let data = { test: 0 };
+        let vm = new Vue({
+            el: '#app',
+            data: data,
+            beforeCreate: function () {
+                console.log('아직 injection 도 안함.', this.test);
+            },
+            created: function () {
+                console.log('test is ' + this.test)
+            },
+            beforeMount: function () {
+                console.log('beforeMount : 마운트 되기전인데.. 마운트가 뭔지 숙지필요');
+            },
+            mounted: function () {
+                console.log('mounted!');
+            }, beforeUpdate: function () {
+                console.log('beforeUpdate');  //특정 el에 대한 변경 전 처리 가능
+            }, updated: function () {
+                console.log('updated!'); //특정 el에 대한 변경 후 처리 가능
+            }, beforeDestroy: function () {
+                console.log('beforeDestroy');
+            }, destroyed: function () {
+                console.log('destroyed');
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vuejs Component</title>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <li v-for="todo in todos" :id="todo.id">
+                {{todo.text}}
+            </li>
+        </ol>
+        <input type="button" v-on:click="reverseMessage" value="뒤집기">
+        <span>{{message}}</span>
+
+        <input v-model="msg">
+        <p>{{msg}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                todos: [
+                    { id: 0, text: 'JavaScript 배우기' },
+                    { id: 1, text: 'Java 배우기' },
+                    { id: 2, text: 'VueJS 배우기' },
+                    { id: 3, text: 'React 배우기' }
+                ],
+                message: '안녕하세요',
+                msg: 'init!'
+            },
+            methods: {
+                reverseMessage: function () {
+                    this.message = this.message.split('').reverse().join('');
+                }
+            }
+        })
+        app.todos.push({ id: 4, text: 'text' });
+        app.todos.push({ id: 5, text: 'text2' });
+      //  alert('asd'.split('').reverse().join(''))
+    </script>
+</body>
+
+</html>

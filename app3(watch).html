@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>webpos-do</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Vue.js -인스턴스 생성 & Watch</h1>
+        <h5>Count : {{test}}</h2>
+            <button v-on:click="test +=1">Add one</button>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        let data2 = { test: 0, msg: 'hwllo', js: { a: 1, b: 's' } };
+        let vm = new Vue({
+            el: '#app',
+            data: data2,
+            beforeCreate: function () {
+                console.log('아직 injection도 안함.', this.test);
+            },
+            created: function () {
+                console.log('test is ' + this.test)
+            }
+        })
+
+        console.log(vm.test === data2.test)
+        console.log(vm.$data === data2)
+        console.log(vm.$data, vm.test);
+        vm.$watch('test', function (newVal, oldVal) {
+            console.log('이전 data ', oldVal);
+            console.log('변경 data ', newVal)
+        });
+    </script>
+</body>
+
+</html>
